@@ -9,3 +9,19 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+model User {
+  id          String   @id @default(cuid())
+  firstName   String
+  lastName    String
+  gender      Gender
+  dateOfBirth DateTime @db.Date
+  email       String   @unique
+
+  @@index([dateOfBirth])
+}
