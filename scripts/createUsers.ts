@@ -1,7 +1,9 @@
 import { PrismaClient } from "@prisma/client";
 
 const getDate = (year: number, month: number, day: number) => {
-  return new Date(year, month - 1, day);
+  const date = new Date(year, month - 1, day, 8);
+  console.log(date);
+  return date;
 };
 
 async function main() {
@@ -45,6 +47,7 @@ async function main() {
       },
     ],
   });
+  console.log(result);
 }
 
 main();
