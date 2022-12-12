@@ -1,5 +1,6 @@
 import express from "express";
 import { apiRouter } from "./api/api";
+import { logger } from "./utils/logger";
 
 const app = express();
 const { PORT = 8000 } = process.env;
@@ -13,5 +14,5 @@ app.get("/", (_, res) => {
 app.use("/api", apiRouter);
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server ready at: http://localhost:${PORT}`);
+  logger.info(`🚀 Server ready at: http://localhost:${PORT}`);
 });
