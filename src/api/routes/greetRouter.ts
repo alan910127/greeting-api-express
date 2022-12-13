@@ -12,8 +12,27 @@ greetRouter.get(
   "/",
   processRequest(getUsersByBirthdaySchema),
   async (req, res) => {
+    // #swagger.tags = ["Greet"]
+    // #swagger.summary = "Greet Users"
+
+    /* 
+    #swagger.parameters["month"] = {
+      in: "query",
+      required: true,
+      type: "integer"
+    }
+    #swagger.parameters["day"] = {
+      in: "query",
+      required: true,
+      type: "integer"
+    } 
+    */
     const { month, day } = req.query;
     const users = await getUsersByBirthday({ prisma, month, day });
+
+    /* #swagger.responses[200] = {
+      schema: [{ $ref: "#/definitions/User" }],
+    } */
     res.status(200).send(users);
   }
 );
