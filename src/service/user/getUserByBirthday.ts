@@ -39,8 +39,8 @@ export const getUsersByBirthday = async ({
   const jsonUsers = await prisma.user.findRaw({
     filter: {
       $and: [
-        { $expr: { $eq: [{ $month: "$date_of_birth" }, month] } },
-        { $expr: { $eq: [{ $dayOfMonth: "$date_of_birth" }, day] } },
+        { $expr: { $eq: [{ $month: "$dateOfBirth" }, month] } },
+        { $expr: { $eq: [{ $dayOfMonth: "$dateOfBirth" }, day] } },
       ],
     },
   });
@@ -48,13 +48,12 @@ export const getUsersByBirthday = async ({
   const users = JSON.parse(JSON.stringify(jsonUsers));
 
   return users.map((user: any): User => {
-    return {
+    const userObj = {
+      ...user,
       id: user["_id"]["$oid"],
-      firstName: user["first_name"],
-      lastName: user["last_name"],
-      gender: user["gender"],
-      dateOfBirth: user["date_of_birth"]["$date"],
-      email: user["email"],
+      dateOfBirth: user["dateOfBirth"]["$date"],
     };
+    delete userObj["_id"];
+    return userObj;
   });
 };
