@@ -49,3 +49,7 @@ npm run dev
 ```bash
 npx ts-node scripts/createUsers.ts
 ```
+
+## Documentation
+
+Swagger UI will be running at http://localhost:8000/docs
