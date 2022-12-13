@@ -24,6 +24,12 @@ Install dependencies
 npm install
 ```
 
+Push schema to database
+
+```bash
+npx prisma db push
+```
+
 Start development server
 
 ```bash
@@ -33,7 +39,7 @@ npm run dev
 ## Load Sample Data
 
 ```bash
-npx ts-node scripts/createUsers.ts
+npm run genusers
 ```
 
 ## Documentation
