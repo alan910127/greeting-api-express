@@ -18,7 +18,7 @@ app.get("/", (_, res) => {
   res.status(200).send({ ping: "pong" });
 });
 
-app.use("/api/v1", apiRouter);
+app.use("/api/v4", apiRouter);
 
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
