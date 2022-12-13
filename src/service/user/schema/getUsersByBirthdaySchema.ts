@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const greetSchema = z.object({
+export const getUsersByBirthdaySchema = {
   query: z
     .object({
       month: z.coerce.number(),
@@ -10,7 +10,7 @@ export const greetSchema = z.object({
       message: "Incorrect date provided",
       path: ["day"],
     }),
-});
+};
 
 const isDateCorrect = (month: number, day: number) => {
   if ([1, 3, 5, 7, 8, 10, 12].includes(month)) {
