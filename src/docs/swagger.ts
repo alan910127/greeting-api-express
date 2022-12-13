@@ -11,7 +11,16 @@ const docs = {
   host: "localhost:8000",
   tags: [{ name: "default" }, { name: "Greet" }, { name: "Users" }],
   definitions: {
-    GreetResponse: "<Greet Message>",
+    GreetResponse: [
+      "Subject: Happy birthday!\n",
+      "Happy birthday, dear John!\n",
+      "We offer special discount 20% off for the following items:\n",
+      "White Wine, iPhone X\n",
+      "Subject: Happy birthday!\n",
+      "Happy birthday, dear Mary!\n",
+      "We offer special discount 50% off for the following items:\n",
+      "Cosmetic, LV Handbags\n",
+    ].join(""),
     User: {
       id: "clbl1m9d20000976xz5frzady",
       firstName: "John",

@@ -46,7 +46,7 @@
         }
       }
     },
-    "/api/users/": {
+    "/api/v2/users/": {
       "get": {
         "tags": [
           "Users"
@@ -108,7 +108,7 @@
         }
       }
     },
-    "/api/users/{userId}": {
+    "/api/v2/users/{userId}": {
       "get": {
         "tags": [
           "Users"
@@ -205,7 +205,7 @@
         }
       }
     },
-    "/api/greeting/": {
+    "/api/v2/greeting/": {
       "get": {
         "tags": [
           "Greet"
@@ -240,7 +240,7 @@
   "definitions": {
     "GreetResponse": {
       "type": "string",
-      "example": "<Greet Message>"
+      "example": "Subject: Happy birthday!\nHappy birthday, dear John!\nWe offer special discount 20% off for the following items:\nWhite Wine, iPhone X\nSubject: Happy birthday!\nHappy birthday, dear Mary!\nWe offer special discount 50% off for the following items:\nCosmetic, LV Handbags\n"
     },
     "User": {
       "type": "object",
