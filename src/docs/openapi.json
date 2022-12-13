@@ -46,7 +46,7 @@
         }
       }
     },
-    "/api/v1/users/": {
+    "/api/v6/users/": {
       "get": {
         "tags": [
           "Users"
@@ -108,7 +108,7 @@
         }
       }
     },
-    "/api/v1/users/{userId}": {
+    "/api/v6/users/{userId}": {
       "get": {
         "tags": [
           "Users"
@@ -205,7 +205,7 @@
         }
       }
     },
-    "/api/v1/greeting/": {
+    "/api/v6/greeting/": {
       "get": {
         "tags": [
           "Greet"
@@ -239,8 +239,20 @@
   },
   "definitions": {
     "GreetResponse": {
-      "type": "string",
-      "example": "Subject: Happy birthday!\nHappy birthday, dear John!\n"
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Subject": {
+            "type": "string",
+            "example": "Happy birthday!"
+          },
+          "content": {
+            "type": "string",
+            "example": "Happy birthday, dear John!"
+          }
+        }
+      }
     },
     "User": {
       "type": "object",
