@@ -1,9 +1,15 @@
 import { PrismaClient } from "@prisma/client";
+import { z } from "zod";
 
-interface GetAllUsersInput {
+export const getUserByIdSchema = {
+  params: z.object({
+    userId: z.string(),
+  }),
+};
+
+type GetAllUsersInput = z.infer<typeof getUserByIdSchema.params> & {
   prisma: PrismaClient;
-  userId: string;
-}
+};
 
 export const getUserById = async ({ prisma, userId }: GetAllUsersInput) => {
   const users = await prisma.user.findUnique({

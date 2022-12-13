@@ -1,10 +1,16 @@
 import { PrismaClient } from "@prisma/client";
+import { z } from "zod";
 
-interface GetAllUsersInput {
+export const getUsersSchema = {
+  query: z.object({
+    take: z.coerce.number().nonnegative().optional(),
+    skip: z.coerce.number().nonnegative().optional(),
+  }),
+};
+
+type GetAllUsersInput = z.infer<typeof getUsersSchema.query> & {
   prisma: PrismaClient;
-  take?: number;
-  skip?: number;
-}
+};
 
 export const getUsers = async ({
   prisma,

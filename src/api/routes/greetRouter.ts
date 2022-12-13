@@ -1,8 +1,10 @@
 import { Router } from "express";
 import { processRequest } from "zod-express-middleware";
 import prisma from "../../lib/prisma";
-import { getUsersByBirthday } from "../../service/user/getUserByBirthday";
-import { getUsersByBirthdaySchema } from "../../service/user/schema/getUsersByBirthdaySchema";
+import {
+  getUsersByBirthday,
+  getUsersByBirthdaySchema,
+} from "../../service/user/getUserByBirthday";
 
 export const greetRouter = Router();
 
