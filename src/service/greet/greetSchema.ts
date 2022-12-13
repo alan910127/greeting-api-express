@@ -1,13 +1,10 @@
 import { z } from "zod";
 
-const parseNumber = () =>
-  z.preprocess((input) => parseInt(input as string, 10), z.number().positive());
-
 export const greetSchema = z.object({
   query: z
     .object({
-      month: parseNumber(),
-      day: parseNumber(),
+      month: z.coerce.number(),
+      day: z.coerce.number(),
     })
     .refine(({ month, day }) => isDateCorrect(month, day), {
       message: "Incorrect date provided",
