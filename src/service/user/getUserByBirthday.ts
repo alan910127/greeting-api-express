@@ -1,5 +1,6 @@
-import { PrismaClient, User } from "@prisma/client";
+import { User } from "@prisma/client";
 import { z } from "zod";
+import { WithPrisma } from "../../types/WithPrisma";
 
 export const getUsersByBirthdaySchema = {
   query: z
@@ -26,11 +27,9 @@ const isDateValid = (month: number, day: number) => {
   return false;
 };
 
-type QueryUsersByBirthdayInput = z.infer<
-  typeof getUsersByBirthdaySchema.query
-> & {
-  prisma: PrismaClient;
-};
+type QueryUsersByBirthdayInput = WithPrisma<
+  z.infer<typeof getUsersByBirthdaySchema.query>
+>;
 
 export const getUsersByBirthday = async ({
   prisma,

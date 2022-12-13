@@ -1,5 +1,5 @@
-import { PrismaClient } from "@prisma/client";
 import { z } from "zod";
+import { WithPrisma } from "../../types/WithPrisma";
 
 export const getUsersSchema = {
   query: z.object({
@@ -8,9 +8,7 @@ export const getUsersSchema = {
   }),
 };
 
-type GetAllUsersInput = z.infer<typeof getUsersSchema.query> & {
-  prisma: PrismaClient;
-};
+type GetAllUsersInput = WithPrisma<z.infer<typeof getUsersSchema.query>>;
 
 export const getUsers = async ({
   prisma,
