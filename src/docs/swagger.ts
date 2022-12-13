@@ -33,7 +33,7 @@ const docs = {
   },
 };
 
-const outputFile = "src/docs/openapi.json";
-const endpointsFiles = ["src/server.ts"];
+const outputFile = "./openapi.json";
+const endpointsFiles = ["../server.ts"];
 
 swagger(outputFile, endpointsFiles, docs);
