@@ -35,12 +35,26 @@ export const getUsersByBirthday = async ({
   prisma,
   month,
   day,
-}: QueryUsersByBirthdayInput) => {
-  const users = await prisma.$queryRaw<User[]>`
-  SELECT * 
-  FROM "public"."User"
-  WHERE EXTRACT(MONTH FROM "User"."dateOfBirth") = ${month}
-    AND EXTRACT(DAY FROM "User"."dateOfBirth") = ${day}`;
+}: QueryUsersByBirthdayInput): Promise<User[]> => {
+  const jsonUsers = await prisma.user.findRaw({
+    filter: {
+      $and: [
+        { $expr: { $eq: [{ $month: "$date_of_birth" }, month] } },
+        { $expr: { $eq: [{ $dayOfMonth: "$date_of_birth" }, day] } },
+      ],
+    },
+  });
 
-  return users;
+  const users = JSON.parse(JSON.stringify(jsonUsers));
+
+  return users.map((user: any): User => {
+    return {
+      id: user["_id"]["$oid"],
+      firstName: user["first_name"],
+      lastName: user["last_name"],
+      gender: user["gender"],
+      dateOfBirth: user["date_of_birth"]["$date"],
+      email: user["email"],
+    };
+  });
 };
