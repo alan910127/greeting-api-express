@@ -11,6 +11,7 @@ const docs = {
   host: "localhost:8000",
   tags: [{ name: "default" }, { name: "Greet" }, { name: "Users" }],
   definitions: {
+    GreetResponse: "<Greet Message>",
     User: {
       id: "clbl1m9d20000976xz5frzady",
       firstName: "John",

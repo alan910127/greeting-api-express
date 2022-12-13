@@ -1,3 +1,5 @@
 import { User } from "@prisma/client";
 
-export const getGreetResponse = ({}: User) => {};
+export const getGreetResponse = (users: User[]) => {
+  return users;
+};

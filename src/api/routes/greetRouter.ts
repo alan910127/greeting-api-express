@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { processRequest } from "zod-express-middleware";
 import prisma from "../../lib/prisma";
+import { getGreetResponse } from "../../service/greet/getGreetResponse";
 import {
   getUsersByBirthday,
   getUsersByBirthdaySchema,
@@ -31,8 +32,9 @@ greetRouter.get(
     const users = await getUsersByBirthday({ prisma, month, day });
 
     /* #swagger.responses[200] = {
-      schema: [{ $ref: "#/definitions/User" }],
+      schema: { $ref: "#/definitions/GreetResponse" },
     } */
-    res.status(200).send(users);
+    const greetingMessage = getGreetResponse(users);
+    res.status(200).send(greetingMessage);
   }
 );

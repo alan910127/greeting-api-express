@@ -230,13 +230,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/User"
-              },
-              "xml": {
-                "name": "main"
-              }
+              "$ref": "#/definitions/GreetResponse"
             }
           }
         }
@@ -244,6 +238,10 @@
     }
   },
   "definitions": {
+    "GreetResponse": {
+      "type": "string",
+      "example": "<Greet Message>"
+    },
     "User": {
       "type": "object",
       "properties": {
