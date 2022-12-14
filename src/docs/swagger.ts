@@ -1,36 +1,61 @@
 import SwaggerAutogen from "swagger-autogen";
 
-const swagger = SwaggerAutogen();
+const swagger = SwaggerAutogen({ openapi: "3.0.0" });
 
 const docs = {
   info: {
-    version: "0.1.0",
-    title: "Greeting Server",
-    description: "Greet all members whose birthday is today",
+    version: "0.1.0", // by default: '1.0.0'
+    title: "Greeting API Server", // by default: 'REST API'
+    description: "", // by default: ''
   },
-  host: "localhost:8000",
-  tags: [{ name: "default" }, { name: "Greet" }, { name: "Users" }],
+  servers: [
+    {
+      url: "http://localhost:8000/",
+    },
+  ],
+  consumes: ["application/json"], // by default: ['application/json']
+  produces: ["application/json"], // by default: ['application/json']
+  tags: [
+    // by default: empty Array
+    { name: "default" },
+    { name: "Greet" },
+    { name: "Users" },
+  ],
+  securityDefinitions: {}, // by default: empty object
   definitions: {
-    GreetResponse: "Subject: Happy birthday!\nHappy birthday, dear John!\n",
+    Greet: [
+      {
+        title: "Subject: Happy birthday!",
+        content: "Happy birthday, dear John!",
+      },
+    ],
     User: {
       id: "clbl1m9d20000976xz5frzady",
       firstName: "John",
       lastName: "Doe",
       gender: "MALE",
-      dateOfBirth: "1987-06-05T00:00:00.000Z",
-      email: "johndoe@example.com",
+      dateOfBirth: "2000-01-01:00:00.000Z",
+      email: "john.doe@example.com",
     },
-    UserWithoutId: {
+    UserCreate: {
+      $firstName: "John",
+      $lastName: "Doe",
+      $gender: "MALE",
+      $dateOfBirth: "2000-01-01:00:00.000Z",
+      $email: "john.doe@example.com",
+    },
+    UserUpdate: {
       firstName: "John",
       lastName: "Doe",
       gender: "MALE",
-      dateOfBirth: "1987-06-05T00:00:00.000Z",
-      email: "johndoe@example.com",
+      dateOfBirth: "2000-01-01:00:00.000Z",
+      email: "john.doe@example.com",
     },
     UserNotFound: {
-      message: "User not found",
+      message: "User Not Found",
     },
-  },
+  }, // by default: empty object (Swagger 2.0)
+  components: {}, // by default: empty object (OpenAPI 3.x)
 };
 
 const outputFile = "./openapi.json";
