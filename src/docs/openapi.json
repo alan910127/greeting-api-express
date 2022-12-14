@@ -377,7 +377,7 @@
             },
             "email": {
               "type": "string",
-              "example": "john.doe@linecorp.com"
+              "example": "john.doe@example.com"
             }
           }
         },
@@ -410,7 +410,7 @@
           },
           "email": {
             "type": "string",
-            "example": "john.doe@linecorp.com"
+            "example": "john.doe@example.com"
           }
         },
         "xml": {
@@ -438,7 +438,7 @@
           },
           "email": {
             "type": "string",
-            "example": "john.doe@linecorp.com"
+            "example": "john.doe@example.com"
           }
         },
         "required": [
@@ -473,7 +473,7 @@
           },
           "email": {
             "type": "string",
-            "example": "john.doe@linecorp.com"
+            "example": "john.doe@example.com"
           }
         },
         "xml": {

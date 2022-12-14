@@ -30,7 +30,7 @@ const docs = {
         lastName: "Doe",
         gender: "MALE",
         dateOfBirth: "2000-01-01:00:00.000Z",
-        email: "john.doe@linecorp.com",
+        email: "john.doe@example.com",
       },
     ],
     User: {
@@ -39,21 +39,21 @@ const docs = {
       lastName: "Doe",
       gender: "MALE",
       dateOfBirth: "2000-01-01:00:00.000Z",
-      email: "john.doe@linecorp.com",
+      email: "john.doe@example.com",
     },
     UserCreate: {
       $firstName: "John",
       $lastName: "Doe",
       $gender: "MALE",
       $dateOfBirth: "2000-01-01:00:00.000Z",
-      $email: "john.doe@linecorp.com",
+      $email: "john.doe@example.com",
     },
     UserUpdate: {
       firstName: "John",
       lastName: "Doe",
       gender: "MALE",
       dateOfBirth: "2000-01-01:00:00.000Z",
-      email: "john.doe@linecorp.com",
+      email: "john.doe@example.com",
     },
     UserNotFound: {
       message: "User Not Found",
