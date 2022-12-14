@@ -1,12 +1,16 @@
 import { User } from "@prisma/client";
+import { XMLBuilder } from "fast-xml-parser";
 
 export const getGreetResponse = (users: User[]) => {
   const messages = users.map(({ firstName }) => {
     return {
-      Subject: "Happy birthday!",
+      title: "Subject: Happy birthday!",
       content: `Happy birthday, dear ${firstName}!`,
     };
   });
 
-  return messages;
+  const builder = new XMLBuilder({});
+  const xmlMessages = builder.build({ root: { greeting: messages } });
+
+  return xmlMessages;
 };

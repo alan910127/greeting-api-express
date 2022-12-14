@@ -35,6 +35,6 @@ greetRouter.get(
       schema: { $ref: "#/definitions/GreetResponse" },
     } */
     const greetingMessage = getGreetResponse(users);
-    res.status(200).send(greetingMessage);
+    res.status(200).type("application/xml").send(greetingMessage);
   }
 );
