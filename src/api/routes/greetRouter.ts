@@ -32,7 +32,11 @@ greetRouter.get(
     const users = await getUsersByBirthday({ prisma, month, day });
 
     /* #swagger.responses[200] = {
-      schema: { $ref: "#/definitions/GreetResponse" },
+      content: {
+        "application/xml": {
+          schema: { $ref: "#/definitions/Greet" },
+        }
+      }
     } */
     const greetingMessage = getGreetResponse(users);
     res.status(200).type("application/xml").send(greetingMessage);
