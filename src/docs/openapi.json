@@ -94,7 +94,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/UserWithoutId"
+              "$ref": "#/definitions/UserCreate"
             }
           }
         ],
@@ -156,7 +156,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/UserWithoutId"
+              "$ref": "#/definitions/UserUpdate"
             }
           }
         ],
@@ -230,7 +230,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/GreetResponse"
+              "$ref": "#/definitions/Greet"
             }
           }
         }
@@ -239,15 +239,24 @@
   },
   "definitions": {
     "GreetResponse": {
-      "type": "string",
-      "example": "Subject: Happy birthday!\nHappy birthday, dear John!\n"
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "example": "Subject: Happy birthday!"
+        },
+        "content": {
+          "type": "string",
+          "example": "Happy birthday, dear John!"
+        }
+      }
     },
     "User": {
       "type": "object",
       "properties": {
         "id": {
           "type": "string",
-          "example": "clbl1m9d20000976xz5frzady"
+          "example": "6398ba9e2bb5c53b28501195"
         },
         "firstName": {
           "type": "string",
@@ -271,7 +280,39 @@
         }
       }
     },
-    "UserWithoutId": {
+    "UserCreate": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "example": "John"
+        },
+        "lastName": {
+          "type": "string",
+          "example": "Doe"
+        },
+        "gender": {
+          "type": "string",
+          "example": "MALE"
+        },
+        "dateOfBirth": {
+          "type": "string",
+          "example": "1987-06-05T00:00:00.000Z"
+        },
+        "email": {
+          "type": "string",
+          "example": "johndoe@example.com"
+        }
+      },
+      "required": [
+        "firstName",
+        "lastName",
+        "gender",
+        "dateOfBirth",
+        "email"
+      ]
+    },
+    "UserUpdate": {
       "type": "object",
       "properties": {
         "firstName": {

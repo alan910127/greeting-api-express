@@ -11,16 +11,26 @@ const docs = {
   host: "localhost:8000",
   tags: [{ name: "default" }, { name: "Greet" }, { name: "Users" }],
   definitions: {
-    GreetResponse: "Subject: Happy birthday!\nHappy birthday, dear John!\n",
+    GreetResponse: {
+      title: "Subject: Happy birthday!",
+      content: "Happy birthday, dear John!",
+    },
     User: {
-      id: "clbl1m9d20000976xz5frzady",
+      id: "6398ba9e2bb5c53b28501195",
       firstName: "John",
       lastName: "Doe",
       gender: "MALE",
       dateOfBirth: "1987-06-05T00:00:00.000Z",
       email: "johndoe@example.com",
     },
-    UserWithoutId: {
+    UserCreate: {
+      $firstName: "John",
+      $lastName: "Doe",
+      $gender: "MALE",
+      $dateOfBirth: "1987-06-05T00:00:00.000Z",
+      $email: "johndoe@example.com",
+    },
+    UserUpdate: {
       firstName: "John",
       lastName: "Doe",
       gender: "MALE",
