@@ -65,7 +65,7 @@
         }
       }
     },
-    "/api/v1/users/": {
+    "/api/v3/users/": {
       "get": {
         "tags": [
           "Users"
@@ -155,7 +155,7 @@
         }
       }
     },
-    "/api/v1/users/{userId}": {
+    "/api/v3/users/{userId}": {
       "get": {
         "tags": [
           "Users"
@@ -303,7 +303,7 @@
         }
       }
     },
-    "/api/v1/greeting/": {
+    "/api/v3/greeting/": {
       "get": {
         "tags": [
           "Greet"
@@ -343,6 +343,21 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/api/v3/greeting/picture": {
+      "get": {
+        "tags": [
+          "Greet"
+        ],
+        "summary": "Greeting Picture",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }

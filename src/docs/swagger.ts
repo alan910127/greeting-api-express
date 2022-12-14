@@ -27,6 +27,7 @@ const docs = {
       {
         title: "Subject: Happy birthday!",
         content: "Happy birthday, dear John!",
+        imageUrl: "http://localhost:8000/api/v3/greeting/picture",
       },
     ],
     User: {

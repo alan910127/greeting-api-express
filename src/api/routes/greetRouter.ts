@@ -1,4 +1,5 @@
 import { Router } from "express";
+import path from "path";
 import { processRequest } from "zod-express-middleware";
 import prisma from "../../lib/prisma";
 import { getGreetResponse } from "../../service/greet/getGreetResponse";
@@ -34,7 +35,16 @@ greetRouter.get(
     /* #swagger.responses[200] = {
       schema: { $ref: "#/definitions/Greet" },
     } */
-    const greetingMessage = getGreetResponse(users);
+    const greetingMessage = getGreetResponse({
+      host: `http://${req.get("host")}`,
+      users,
+    });
     res.status(200).send(greetingMessage);
   }
 );
+
+greetRouter.get("/picture", async (_, res) => {
+  // #swagger.tags = ["Greet"]
+  // #swagger.summary = "Greeting Picture"
+  res.sendFile(path.resolve("public/birthday-greet.jpg"));
+});
