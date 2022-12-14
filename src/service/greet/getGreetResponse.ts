@@ -18,16 +18,21 @@ const getPromotionMessage = ({
   discount: number;
   items: string[];
 }) => {
-  return `We offer special discount ${discount}% off for the following items:\n${items.join(
-    ", "
-  )}`;
+  return [
+    `We offer special discount ${discount}% off for the following items:`,
+    items.join(", "),
+  ];
 };
 
 export const getGreetResponse = (users: User[]) => {
   const messages = users.map(({ firstName, gender }) => {
-    return `Subject: Happy birthday!\nHappy birthday, dear ${firstName}!\n${getPromotionMessage(
-      promotion[gender]
-    )}\n`;
+    return {
+      title: "Subject: Happy birthday!",
+      content: [
+        `Happy birthday, dear ${firstName}!`,
+        ...getPromotionMessage(promotion[gender]),
+      ],
+    };
   });
   return messages.join("");
 };
