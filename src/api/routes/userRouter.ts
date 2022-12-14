@@ -69,7 +69,7 @@ userRouter.post("/", processRequest(createUserSchema), async (req, res) => {
   /* #swagger.parameters["userData"] = {
     in: "body",
     required: true,
-    schema: { $ref: "#/definitions/UserWithoutId" }
+    schema: { $ref: "#/definitions/UserCreate" }
   } */
   const userData = req.body;
   const user = await createUser({ prisma, ...userData });
@@ -104,7 +104,7 @@ userRouter.patch(
     /* #swagger.parameters["userData"] = {
       in: "body",
       required: true,
-      schema: { $ref: "#/definitions/UserWithoutId" }
+      schema: { $ref: "#/definitions/UserUpdate" }
     } */
     const updateData = req.body;
     const updatedUser = await updateUser({ prisma, userId, ...updateData });
