@@ -10,7 +10,7 @@ export const getGreetResponse = (users: User[]) => {
   });
 
   const builder = new XMLBuilder({});
-  const xmlMessages = builder.build({ root: { greeting: messages } });
+  const xmlMessages = builder.build({ root: { Greet: messages } });
 
   return xmlMessages;
 };
