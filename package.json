@@ -8,7 +8,6 @@
     "build": "rimraf dist && tsc",
     "start": "node dist/server.js",
     "gendoc": "ts-node src/docs/swagger.ts",
-    "migrate:postgres": "dotenv -e .env.test -- npx prisma migrate dev --name postgres-init",
     "docker:up": "docker-compose -f docker-compose.test.yml up -d",
     "docker:down": "docker-compose -f docker-compose.test.yml down",
     "test": "npm run docker:up && dotenv -e .env.test npx prisma migrate deploy && dotenv -e .env.test jest -i"
