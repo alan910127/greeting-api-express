@@ -34,5 +34,5 @@ export const getGreetResponse = (users: User[]) => {
       ],
     };
   });
-  return messages.join("");
+  return messages;
 };
