@@ -26,7 +26,7 @@ const users: User[] = [
 ];
 
 describe("getGreetResponse", () => {
-  it("should return simple message response", () => {
+  it("should return simple message response but in xml", () => {
     const messages = getGreetResponse(users);
 
     expect(messages).toEqual(
