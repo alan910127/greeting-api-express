@@ -7,7 +7,10 @@
     "dev": "NODE_ENV=development nodemon src/server.ts",
     "build": "rimraf dist && tsc",
     "start": "node dist/server.js",
-    "gendoc": "ts-node src/docs/swagger.ts"
+    "gendoc": "ts-node src/docs/swagger.ts",
+    "docker:up": "docker-compose -f docker-compose.test.yml up -d",
+    "docker:down": "docker-compose -f docker-compose.test.yml down",
+    "test": "dotenv -e .env.test npx prisma migrate deploy && dotenv -e .env.test jest -i"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +18,7 @@
   "dependencies": {
     "@hapi/boom": "^10.0.0",
     "@prisma/client": "^4.7.1",
+    "dotenv-cli": "^6.0.0",
     "express": "^4.18.2",
     "pino": "^8.7.0",
     "pino-pretty": "^9.1.1",
