@@ -1,5 +1,5 @@
 import { User } from "@prisma/client";
-import { XMLBuilder } from "fast-xml-parser";
+import { toXml } from "../../utils/toXml";
 
 export const getGreetResponse = (users: User[]) => {
   const messages = users.map(({ firstName }) => {
@@ -9,8 +9,5 @@ export const getGreetResponse = (users: User[]) => {
     };
   });
 
-  const builder = new XMLBuilder({});
-  const xmlMessages = builder.build({ root: { Greet: messages } });
-
-  return xmlMessages;
+  return toXml({ root: { Greet: messages } });
 };
