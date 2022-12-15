@@ -51,3 +51,23 @@ npx ts-node scripts/createUsers.ts
 ## Documentation
 
 Swagger UI will be running at http://localhost:8000/docs
+
+## Run Tests
+
+Start testing database
+
+```bash
+npm run docker:up
+```
+
+Run tests (may need to wait for database to be ready)
+
+```bash
+npm run test
+```
+
+Close the testing database
+
+```bash
+npm run docker:down
+```
