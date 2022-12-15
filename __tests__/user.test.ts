@@ -1,6 +1,5 @@
 import { Gender, PrismaClient } from "@prisma/client";
 import { getUsersByBirthday } from "../src/service/user/getUserByBirthday";
-import { getUsers } from "../src/service/user/getUsers";
 
 let prisma: PrismaClient;
 
@@ -62,7 +61,6 @@ afterAll(async () => {
 
 describe("getUsersByBirthday", () => {
   it("should get all users with birthday in input", async () => {
-    const allUsers = await getUsers({ prisma });
     const filteredUsers = await getUsersByBirthday({
       prisma,
       month: 8,
@@ -70,9 +68,10 @@ describe("getUsersByBirthday", () => {
     });
 
     expect(filteredUsers).toHaveLength(2);
-    expect(filteredUsers).toEqual(
-      allUsers.filter((user) => ["Robert", "Sherry"].includes(user.firstName))
-    );
+    expect(filteredUsers.map((user) => user.firstName)).toEqual([
+      "Robert",
+      "Sherry",
+    ]);
   });
 
   it("should get no user when input is invalid", async () => {
