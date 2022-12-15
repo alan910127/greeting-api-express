@@ -26,7 +26,7 @@ const users: User[] = [
 ];
 
 describe("getGreetResponse", () => {
-  it("should not return a image url if the person is not over 49", () => {
+  it("should return simple message but with fullname", () => {
     const messages = getGreetResponse(users);
 
     expect(messages).toHaveLength(2);
