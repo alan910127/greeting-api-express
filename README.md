@@ -16,8 +16,6 @@ A RESTful API server that can greet all users whose birthday is today
 
 `PORT` (optional, default=8000)
 
-`API_URL` (optional, default=`/api`)
-
 ## Run Locally
 
 Install dependencies
